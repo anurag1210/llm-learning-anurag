@@ -38,5 +38,6 @@ b.“Few-Shot Prompting” is when we show the model examples of the answers we 
 c.“Self-Consistency” involves asking the same question to multiple versions of the model and then choosing the answer that comes up most often.
 
 In short, good prompting is about guiding the model with clear instructions, breaking down tasks into simpler ones, and using specific methods to improve performance
-
+**
+Tokenization is the initial phase of interacting with LLMs. It involves breaking the input text into smaller pieces known as tokens. Tokens can range from single characters to entire words, and the size of these tokens can greatly influence the model’s performance. Some models adopt subword tokenization, breaking words into smaller segments that retain meaningful linguistic elements**
 
