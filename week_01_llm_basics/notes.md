@@ -180,5 +180,28 @@ This happens automatically using gradients — small mathematical nudges that te
 ---
 
 
+# 📓 Anurag's LLM Q&A Notebook
+
+This notebook contains answers to key foundational LLM concepts we've explored so far.
+...
+
+---
+
+## 🧠 Is ChatGPT learning when I give it a sentence like "The cat sat on the..."?
+
+No — ChatGPT is **not learning from your input**. The model was already trained before you used it.
+
+Here's how it works:
+
+- During **training**, the model learned language patterns by reading billions of sentences. It adjusted weights and embeddings based on how well it predicted the next word at each step.
+- During **inference** (when you use ChatGPT), it's just **applying what it learned** to predict the next token.
+
+So when you type "The cat sat on the", it's not learning — it's simply guessing the next most likely word based on patterns it saw during training.
+
+✅ In summary: ChatGPT is not training on your input. It uses what it learned to generate predictions — no weights are changed, and no new learning is happening during inference.
+
+---
+
+
 
 
