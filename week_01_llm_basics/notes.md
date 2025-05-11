@@ -41,3 +41,144 @@ In short, good prompting is about guiding the model with clear instructions, bre
 **
 Tokenization is the initial phase of interacting with LLMs. It involves breaking the input text into smaller pieces known as tokens. Tokens can range from single characters to entire words, and the size of these tokens can greatly influence the model’s performance. Some models adopt subword tokenization, breaking words into smaller segments that retain meaningful linguistic elements**
 
+--Embeddings are a way to translate tokens, which are words or pieces of words (or rather their numerical IDs), into numbers that the computer can manipulate. They play a key role in helping the model understand the relationships among words making up a statement. This is made possible by the attention mechanism, as we see later in the discussion about attention.
+
+--An embedding gives each token a unique numerical ID (a vector in a multi-dimensional space) that captures its meaning. While the absolute positions of those vectors themselves don’t have specific meanings, the spatial distance among the vectors reflects, in certain ways, the relationships among the vectors. For example, words like “happy” and “joyful”, while different, are relatively close embeddings in the embedding space.
+
+--Initially, every token is assigned a random vector as its embedding. As the model is trained—meaning as it reads and learns from a large volume of text—it adjusts these numbers. The goal is to tweak them such that tokens with similar meanings end up with similar sets of numbers. This adjustment is done automatically by the model as it learns from different contexts in which the tokens appear.
+
+simple explaination via chat gpt :
+
+magine Every Word Starts as a Random Dot on a Map
+
+At the very beginning of training, the model doesn’t know what “cat”, “dog”, or “banana” means.
+So it just gives each word a random set of numbers — like placing dots randomly on a map.
+
+“cat” → somewhere in the top-left
+“banana” → bottom-right
+“friend” → middle of the map
+
+Right now, these positions don’t mean anything.
+
+⸻
+
+🏋️ But Then the Model Starts Reading Sentences…
+
+“The cat sat on the mat.”
+“A dog barked at the cat.”
+“She ate a banana.”
+“My best friend helped me.”
+
+As it sees words used in context, it starts learning:
+	•	“Hey, ‘cat’ and ‘dog’ often show up in similar types of sentences.”
+	•	“Hmm, ‘banana’ shows up near words like ‘eat’, ‘fruit’, and ‘apple’.”
+	•	“‘Friend’ is often used with people, emotions, help.”
+
+So it starts adjusting the dots (vectors). It nudges them closer or further apart.
+
+⸻
+
+🎯 The Goal:
+
+Move similar words closer together on this “meaning map,”
+and push unrelated ones further apart.
+
+	•	“cat” and “dog” slowly move closer
+	•	“banana” moves toward “fruit”
+	•	“friend” moves toward “kindness”, “help”, etc.
+	•	“cat” and “banana” move apart
+
+⸻
+
+🔁 All of this happens automatically.
+	•	It’s not hand-coded.
+	•	The model updates the embeddings through backpropagation during training.
+	•	After millions of sentences, these embedding vectors become incredibly rich representations of meaning.
+
+
+
+# 📓 Anurag's LLM Q&A Notebook
+
+This notebook contains answers to key foundational LLM concepts we've explored so far.
+
+---
+
+## 🧠 What is an RNN in simple terms?
+
+RNN (Recurrent Neural Network) is like reading a sentence word-by-word, remembering past words to understand the next one. It's sequential, meaning it learns one step at a time and passes a memory forward. But it struggles with long sequences and forgets old information easily.
+
+---
+
+## 🧠 What is the vanishing gradient problem?
+
+It’s like playing Chinese whispers: when you try to pass learning signals backward through many steps, they shrink too much, and the early steps learn nothing. That’s why RNNs struggle to remember things far back in time.
+
+---
+
+## 🧠 Did Transformers replace RNNs?
+
+Yes. Transformers process all words at once using self-attention and solve vanishing gradients, memory, and scalability problems. They're now the standard in NLP and LLMs.
+
+---
+
+## 🧠 What is the Transformer architecture in simple terms?
+
+Transformers look at the entire sentence all at once using self-attention. For each word, they ask, “which other words should I pay attention to?” This lets them understand context and relationships without forgetting.
+
+---
+
+## ⚠️ Limitations of Transformers
+
+- Fixed context size (limited memory per input)
+- Expensive to train and run (quadratic scaling)
+- No true long-term memory
+- Prone to hallucination
+- Hard to explain how they work internally
+
+---
+
+## 🧠 What are Embeddings in LLMs?
+
+Embeddings are like “meaning maps” for words. Each word is turned into a vector. Similar meanings = vectors that are close. Used in search, RAG, semantic similarity, and more.
+
+---
+
+## 🧠 How are embeddings trained?
+
+Initially, each token gets a random vector. As the model reads more text, it nudges those vectors based on how words are used in context. Over time, similar words move closer together on the “meaning map.”
+
+---
+
+## 🧠 What is context size in LLMs?
+
+Context size = how many tokens the model can see at once. It’s like the model’s short-term memory. GPT-3.5 has 4k tokens, GPT-4 Turbo has 128k, Claude has 200k. Once you go over, the model forgets earlier tokens.
+
+---
+
+## 🧠 Why are embeddings so powerful compared to rule-based systems?
+
+The advantage of using embeddings is that they enable the models to capture the nuances of human language, such as:
+- Multiple meanings of the same word
+- Word meaning depending on context
+- Flow and coherence of a sentence
+
+This was not possible in older rule-based systems, which relied on manually defined grammar and word lists. It is practically impossible to heuristically capture all the subtle ways meaning is formed in real human communication. Embeddings let the model learn those patterns from data — automatically and deeply.
+
+---
+
+## 🧠 How does the model know whether to bring word embeddings closer or push them apart?
+
+The model doesn't "know" in a human sense. It just learns by adjusting itself based on mistakes. Here's how:
+
+When it predicts the wrong word (e.g., "hat" instead of "mat"), it calculates a "loss" — a score showing how wrong it was. Then it uses backpropagation to figure out which parts of the network (including the embeddings) contributed to that mistake.
+
+- If "hat" caused the wrong output, its embedding is pushed away from the context.
+- If "mat" would have reduced the loss, its embedding is pulled closer to the context.
+
+This happens automatically using gradients — small mathematical nudges that tell the model how to reduce future errors. Over time, words that appear in similar contexts are moved closer together, even though the model never understands their meaning — it just learns from the structure of language through feedback.
+
+---
+
+
+
+
