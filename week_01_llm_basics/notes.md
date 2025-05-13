@@ -202,6 +202,96 @@ So when you type "The cat sat on the", it's not learning — it's simply guessin
 
 ---
 
+CLM is more “natural” because it generates text one word at a time, just like humans do.
+MLM (like BERT) learns from artificially masked sentences, which is less realistic.
+
+Let’s bring it to life:
+
+⸻
+
+🗣️ Imagine You’re Speaking:
+
+“I went to the __ yesterday to buy some groceries.”
+
+You think of a word to fill the blank:
+
+“store”
+
+You didn’t see [MASK] — you just remembered your sentence from left to right, sequentially.
+
+That’s what CLM does.
+
+⸻
+
+🤖 Compare How GPT (CLM) Handles It:
+
+Why would [MASK] even be there during training? Aren’t we training on real sentences?”
+
+✅ Yes — BERT is trained on real sentences…
+
+But the [MASK] token is intentionally added during training as part of a training trick called Masked Language Modeling (MLM).
+
+Let’s break it down:
+
+⸻
+
+🧪 How BERT Training Works:
+
+Let’s say the original sentence is:
+
+"The cat sat on the mat"
+
+BERT doesn’t just train on this raw sentence.
+
+Instead, it creates a self-supervised task by modifying the sentence:
+
+👉 It randomly replaces some words with [MASK]:
+
+"The cat [MASK] on the mat"
+
+And now the training task is:
+
+“Hey model, try to guess what the [MASK] word is.”
+
+📌 This is done intentionally to:
+	•	Simulate a “fill-in-the-blank” task
+	•	Teach the model to understand meaning from context on both sides
+
+
+  But You’re Right to Wonder:
+
+“But real-world sentences don’t have [MASK], right?”
+
+Exactly!
+
+⚠️ This is the drawback of BERT:
+	•	During training, it sees [MASK] tokens.
+	•	During inference (real-world use), there are no [MASK] tokens.
+
+This is called a pretrain–fine-tune mismatch.
+
+That’s one reason why GPT (which never uses [MASK]) is better for generating natural language — because it’s trained the same way it’s used.
+
+BERT (MLM)
+GPT (CLM)
+Adds [MASK] to real sentences
+Uses real sentences as-is
+Trains on “fill in the blank” tasks
+Trains to predict next word
+Good for understanding/context tasks
+Good for generation and conversation
+Real sentences are altered during training
+Real sentences stay untouched
+
+
+The [MASK] token in BERT is artificially added during training to create a learning problem.
+It helps BERT learn to understand context — but makes it less natural at generating text compared to GPT.
+
+
+
+
+
+
 
 
 
