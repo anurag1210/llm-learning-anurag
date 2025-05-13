@@ -288,6 +288,36 @@ The [MASK] token in BERT is artificially added during training to create a learn
 It helps BERT learn to understand context — but makes it less natural at generating text compared to GPT.
 
 
+# 📓 Anurag's LLM Q&A Notebook
+
+This notebook contains answers to key foundational LLM concepts we've explored so far.
+...
+
+---
+
+## 🧠 What is LLaVA and how does it work (diagram explanation)?
+
+LLaVA (Large Language and Vision Assistant) is a multimodal model that combines vision and language understanding. Here's a breakdown of how it works:
+
+### 🖼️ Input: An image is given to the model
+
+### 🔍 Step 1: CLIP Visual Encoder
+CLIP acts like the model's eyes. It "looks" at the image and turns it into a vector of features — a numerical summary of what's in the image (like shape, texture, color, etc.).
+
+### 🔁 Step 2: Linear Projection Layer (W)
+This is a translator. It takes the visual features and reshapes them to match the **word embedding space** of the language model. That way, the language model can treat the visual info like it's part of a sentence.
+
+### 🧠 Step 3: Vicuna Language Model
+Now that the image has been turned into "word-like" tokens, Vicuna (a ChatGPT-style LLM) can read and reason over them — just like it would with regular text.
+
+### 🗣️ Step 4: Output
+The model generates text based on the image. Example:  
+> "A cat is sitting on a wooden table."
+
+### ✅ Summary:
+LLaVA = CLIP (for vision) + Vicuna (for language), connected via a simple linear projection. Once image features are embedded like words, the language model takes over and does the rest.
+
+---
 
 
 
