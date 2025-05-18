@@ -1,4 +1,4 @@
-# 📚 Week 02 – Prompting and Prompt Engineering
+# 📚 Week 03 – Prompting and Prompt Engineering
 
 This section contains my learning notes and experiments related to **prompting** and **prompt engineering** based on the book *Building LLMs for Production*.
 
