@@ -45,3 +45,13 @@ Cosine similarity is used to compare the query vector with document vectors and 
 Cosine similarity = How close in direction two data points are in vector space. It's essential in NLP, vector search, and semantic similarity tasks.
 ---
 
+LLAMAIndex and Langchain 
+------------------------
+**LlamaIndex**:
+Turns your structured and unstructured data (PDFs, SQL, APIs, etc.) into a vector index.
+Best for building fast, accurate document question-answering systems.
+Think of it as the backend engine of a RAG app.
+
+**LangChain**:
+Builds complex chains, decision-making flows, and agent-based systems using LLMs.
+Good for multi-step reasoning, tool usage (e.g. calculators, web search), and custom prompts.
